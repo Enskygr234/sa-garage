@@ -320,3 +320,35 @@ button.badge:hover { filter: brightness(1.25); }
   .news-img { width: 100px; height: 80px; }
   .sb-sign { display: none; }
 }
+
+/* küçük ekranlar (1366×768 dizüstü vb.) */
+@media (max-height: 880px) {
+  .hero { min-height: 360px; }
+  .hero-tall { min-height: 380px; }
+  .ht-small { font-size: 26px; }
+  .ht-big { font-size: 80px; }
+  .hero-title { margin-bottom: 12px; }
+  .hero-actions { margin-top: 18px; gap: 12px; }
+  .play-btn { height: 70px; font-size: 34px; min-width: 220px; }
+  .tile { min-height: 70px; }
+  .statusbar { min-height: 76px; }
+  .sb-thumb { width: 56px; height: 56px; }
+}
+@media (max-width: 1250px) {
+  .home-grid { grid-template-columns: minmax(0, 1fr); }
+  .news .news-list { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .news-item { grid-template-columns: 1fr; border: 0; margin: 0; padding: 0; gap: 10px; }
+  .news-img { width: 100%; height: 110px; }
+  .mod-grid.four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .mod-grid.four > :nth-child(4) { display: block; }
+  .sb-game { min-width: 0; padding-right: 18px; }
+  .sb-item { padding: 0 18px; min-width: 0; }
+  .sb-sign { display: none; }
+  .settings-grid { grid-template-columns: minmax(0, 1fr); }
+  .stats-row { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 1100px) {
+  .mod-grid.four { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .mod-grid.four > :nth-child(4) { display: none; }
+  .sb-game small { display: none; }
+}

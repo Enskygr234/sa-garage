@@ -1,0 +1,45 @@
+{
+  "name": "sa-garage",
+  "productName": "SA Garage",
+  "version": "1.0.0",
+  "description": "San Andreas için kişisel launcher: tek tıkla oyna, araç modlarını kur, kayıtlarını yedekle.",
+  "author": "Enskygr234",
+  "license": "UNLICENSED",
+  "private": true,
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win nsis --publish never"
+  },
+  "dependencies": {
+    "7zip-bin": "^5.2.0",
+    "node-unrar-js": "^2.0.2"
+  },
+  "devDependencies": {
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.enskygr234.sagarage",
+    "productName": "SA Garage",
+    "copyright": "© 2026 Enskygr234",
+    "directories": { "output": "dist", "buildResources": "build" },
+    "files": ["main.js", "preload.js", "lib/**/*", "src/**/*", "build/icon.png", "package.json"],
+    "asarUnpack": ["node_modules/7zip-bin/**/*"],
+    "win": {
+      "target": [{ "target": "nsis", "arch": ["x64"] }],
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "SA Garage",
+      "language": "1055",
+      "artifactName": "SA-Garage-Setup-${version}.${ext}",
+      "uninstallDisplayName": "SA Garage"
+    }
+  }
+}

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; script-src 'self'">
+<title>SA Garage</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-logo" id="brand-logo"></span>
+    <div>
+      <b>SA GARAGE</b>
+      <small>SAN ANDREAS LAUNCHER</small>
+    </div>
+  </div>
+  <div class="win-controls">
+    <button class="icon-btn" data-go="settings" title="Ayarlar"><svg viewBox="0 0 24 24"><path d="M12 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm7.4-2.5.1-1-.1-1 2.1-1.6-2-3.4-2.5 1a7.6 7.6 0 0 0-1.7-1L15 3.4h-4L10.7 6a7.6 7.6 0 0 0-1.7 1l-2.5-1-2 3.4L6.6 11l-.1 1 .1 1-2.1 1.6 2 3.4 2.5-1c.5.4 1.1.7 1.7 1l.3 2.6h4l.3-2.6c.6-.3 1.2-.6 1.7-1l2.5 1 2-3.4-2.1-1.6Z"/></svg></button>
+    <button class="icon-btn" id="btn-min" title="Simge durumuna küçült"><svg viewBox="0 0 24 24"><path d="M5 12h14" stroke-width="2"/></svg></button>
+    <button class="icon-btn close" id="btn-close" title="Kapat"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" stroke-width="2"/></svg></button>
+  </div>
+  <div class="version"><i></i><span id="version">Launcher v1.0.0</span></div>
+</header>
+
+<aside class="sidebar">
+  <nav>
+    <a data-go="home" class="active"><svg viewBox="0 0 24 24"><path d="M3 11 12 3l9 8v10h-6v-6H9v6H3z"/></svg><span>Ana Sayfa</span></a>
+    <a data-go="play"><svg viewBox="0 0 24 24" class="line"><circle cx="12" cy="12" r="9"/><path d="m10 8 6 4-6 4z"/></svg><span>Oyna</span></a>
+    <a data-go="mods"><svg viewBox="0 0 24 24" class="line"><path d="M4 8h16v12H4zM8 8V5h8v3M9 13h6"/></svg><span>Modlar</span></a>
+    <a data-go="cars"><svg viewBox="0 0 24 24"><path d="M5 11 7 6h10l2 5h1v6h-2v2h-3v-2H9v2H6v-2H4v-6h1Zm2.2 0h9.6l-1.2-3H8.4ZM7 14a1 1 0 1 0 0 2 1 1 0 0 0 0-2Zm10 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z"/></svg><span>Araç Modları</span></a>
+    <a data-go="settings"><svg viewBox="0 0 24 24" class="line"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9 7 7M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/></svg><span>Ayarlar</span></a>
+    <a data-go="backup"><svg viewBox="0 0 24 24" class="line"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Yedekleme</span></a>
+    <a data-go="about"><svg viewBox="0 0 24 24" class="line"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg><span>Hakkında</span></a>
+  </nav>
+  <div class="side-art" id="side-art">
+    <p class="side-quote">“Garaj hazır,<br>şehir uyumuyor.”<small>— SA Garage</small></p>
+  </div>
+</aside>
+
+<main class="content">
+  <!-- ================= ANA SAYFA ================= -->
+  <section class="page active" id="page-home">
+    <div class="home-grid">
+      <div class="hero card">
+        <div class="hero-art" id="hero-art"></div>
+        <div class="hero-body">
+          <div class="hero-title">
+            <span class="ht-small">SAN ANDREAS</span>
+            <span class="ht-big">GARAGE</span>
+          </div>
+          <h2 id="hero-hello">Los Santos'a tekrar hoş geldin!</h2>
+          <p id="hero-sub">Efsanevi maceraya kaldığın yerden devam et.</p>
+          <div class="hero-actions">
+            <button class="play-btn" data-action="play"><svg viewBox="0 0 24 24"><path d="M7 4v16l13-8z"/></svg><span>OYNA</span></button>
+            <button class="tile" data-action="open-game">
+              <svg viewBox="0 0 24 24" class="line"><path d="M3 6h7l2 2h9v11H3z"/></svg>
+              <div><b>Oyun Klasörü</b><small id="tile-folder">Seçilmedi</small></div>
+            </button>
+            <button class="tile" data-go="settings">
+              <svg viewBox="0 0 24 24" class="line"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9 7 7M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/></svg>
+              <div><b>Oyun Ayarları</b><small>Klasör ve mod desteği</small></div>
+            </button>
+            <button class="tile" data-action="backup">
+              <svg viewBox="0 0 24 24" class="line"><path d="M7 18a5 5 0 1 1 1-9.9A6 6 0 0 1 19 10a4 4 0 0 1-1 8zM12 11v6M9.5 13.5 12 11l2.5 2.5"/></svg>
+              <div><b>Yedekle</b><small>Oyun dosyalarını koru</small></div>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="news card">
+        <div class="card-head">
+          <h3><svg viewBox="0 0 24 24" class="line orange"><path d="M4 5h12v14H6a2 2 0 0 1-2-2zM16 9h4v8a2 2 0 0 1-4 0M7 9h6M7 12h6M7 15h4"/></svg>SON HABERLER</h3>
+          <a class="link" data-go="about">Tümünü Gör →</a>
+        </div>
+        <div id="news-list" class="news-list"></div>
+      </div>
+
+      <div class="card mods-row">
+        <div class="card-head">
+          <h3><svg viewBox="0 0 24 24" class="orange-fill"><path d="M5 11 7 6h10l2 5h1v6h-2v2h-3v-2H9v2H6v-2H4v-6h1Zm2.2 0h9.6l-1.2-3H8.4Z"/></svg>ARAÇ MODLARI</h3>
+          <a class="link" data-go="cars">Tüm Modları Gör →</a>
+        </div>
+        <div class="mod-grid four" id="home-mods"></div>
+      </div>
+
+      <div class="card quick">
+        <div class="card-head"><h3><svg viewBox="0 0 24 24" class="orange-fill"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>HIZLI İŞLEMLER</h3></div>
+        <div class="quick-grid">
+          <button class="q" data-go="mods"><svg viewBox="0 0 24 24" class="orange-fill"><path d="M5 11 7 6h10l2 5h1v6h-2v2h-3v-2H9v2H6v-2H4v-6h1Zm2.2 0h9.6l-1.2-3H8.4Z"/></svg><b>Mod Yöneticisi</b><small>Araç ve skin modlarını yönet</small></button>
+          <button class="q" data-action="open-library"><svg viewBox="0 0 24 24" class="orange-fill"><path d="M3 6h7l2 2h9v11H3z"/></svg><b>Mod Kütüphanesi</b><small>Tüm modları gör ve kur</small></button>
+          <button class="q" data-go="settings"><svg viewBox="0 0 24 24" class="orange-fill"><path d="M12 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm7.4-2.5.1-1-.1-1 2.1-1.6-2-3.4-2.5 1a7.6 7.6 0 0 0-1.7-1L15 3.4h-4L10.7 6a7.6 7.6 0 0 0-1.7 1l-2.5-1-2 3.4L6.6 11l-.1 1 .1 1-2.1 1.6 2 3.4 2.5-1c.5.4 1.1.7 1.7 1l.3 2.6h4l.3-2.6c.6-.3 1.2-.6 1.7-1l2.5 1 2-3.4-2.1-1.6Z"/></svg><b>Oyun Ayarları</b><small>Klasör, mod desteği, sıfırlama</small></button>
+          <button class="q" data-go="backup"><svg viewBox="0 0 24 24" class="orange-fill"><path d="M7 19a5 5 0 1 1 1-9.9A6 6 0 0 1 19 11a4 4 0 0 1-1 8Zm5-8-3 3h2v3h2v-3h2z"/></svg><b>Yedekleme</b><small>Oyun dosyalarını yedekle</small></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= OYNA ================= -->
+  <section class="page" id="page-play">
+    <div class="hero card hero-tall">
+      <div class="hero-art" id="hero-art-2"></div>
+      <div class="hero-body">
+        <div class="hero-title"><span class="ht-small">SAN ANDREAS</span><span class="ht-big">GARAGE</span></div>
+        <h2 id="play-status-title">Hazır</h2>
+        <p id="play-status-text">Her şey yolunda. Oyna'ya bas, gerisini launcher halleder.</p>
+        <div class="hero-actions"><button class="play-btn big" data-action="play"><svg viewBox="0 0 24 24"><path d="M7 4v16l13-8z"/></svg><span>OYNA</span></button></div>
+      </div>
+    </div>
+    <div class="stats-row">
+      <div class="card stat"><small>Toplam oyun süresi</small><b id="st-time">0 dk</b></div>
+      <div class="card stat"><small>Oturum</small><b id="st-sessions">0</b></div>
+      <div class="card stat"><small>Son oynama</small><b id="st-last">—</b></div>
+      <div class="card stat"><small>Kurulu mod</small><b id="st-mods">0</b></div>
+    </div>
+    <div class="card checklist">
+      <div class="card-head"><h3>OYUN ÖNCESİ KONTROL</h3></div>
+      <div id="checklist"></div>
+    </div>
+  </section>
+
+  <!-- ================= MODLAR ================= -->
+  <section class="page" id="page-mods">
+    <div class="page-head">
+      <div><h1 id="mods-title">Modlar</h1><p id="mods-sub">Mod arşivini (.zip, .rar, .7z) buraya sürükle ya da Mod Ekle'ye bas.</p></div>
+      <div class="head-actions">
+        <button class="btn ghost" data-action="import-folder">Klasörden ekle</button>
+        <button class="btn orange" data-action="import">+ Mod Ekle</button>
+      </div>
+    </div>
+    <div class="filters">
+      <div class="seg" id="filter-state">
+        <button class="active" data-f="all">Tümü</button><button data-f="installed">Kurulu</button><button data-f="library">Yüklü</button>
+      </div>
+      <div class="seg" id="filter-cat"></div>
+      <input type="search" id="mod-search" placeholder="Mod ara…">
+    </div>
+    <div class="support-banner card" id="support-banner"></div>
+    <div class="mod-grid" id="mod-grid"></div>
+    <div class="external" id="external"></div>
+  </section>
+
+  <!-- ================= AYARLAR ================= -->
+  <section class="page" id="page-settings">
+    <div class="page-head"><div><h1>Ayarlar</h1><p>Oyun klasörü, mod desteği ve launcher tercihleri.</p></div></div>
+    <div class="settings-grid">
+      <div class="card">
+        <div class="card-head"><h3>OYUN</h3></div>
+        <div class="row-set">
+          <div><b>Oyun klasörü</b><small id="set-dir">Seçilmedi</small></div>
+          <div class="row-actions"><button class="btn ghost" data-action="autodetect">Otomatik bul</button><button class="btn orange" data-action="choose">Değiştir</button></div>
+        </div>
+        <div id="detect-list"></div>
+        <div class="row-set"><div><b>Sürüm</b><small id="set-version">—</small></div><span class="chip" id="set-version-chip">—</span></div>
+        <div class="row-set"><div><b>Oyun ayarlarını sıfırla</b><small>Çözünürlük yüzünden oyun açılmıyorsa ya da ayarlar bozulduysa</small></div><button class="btn ghost" data-action="reset-settings">Sıfırla</button></div>
+        <div class="row-set"><div><b>Klasörler</b><small>Hızlıca aç</small></div>
+          <div class="row-actions"><button class="btn ghost" data-action="open-game">Oyun</button><button class="btn ghost" data-action="open-user">Kayıtlar</button><button class="btn ghost" data-action="open-modloader">modloader</button></div></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><h3>MOD DESTEĞİ</h3></div>
+        <div id="support-detail"></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><h3>LAUNCHER</h3></div>
+        <div class="row-set"><div><b>Oyun açılınca</b><small>Launcher ne yapsın?</small></div>
+          <div class="seg" id="after-play"><button data-v="minimize">Küçült</button><button data-v="keep">Açık kalsın</button><button data-v="close">Kapat</button></div></div>
+        <div class="row-set"><div><b>Oynamadan önce otomatik yedekle</b><small>Her Oyna'da kayıtların güvene alınır</small></div><label class="switch"><input type="checkbox" id="auto-backup"><span></span></label></div>
+        <div class="row-set"><div><b>Saklanacak otomatik yedek</b><small>Eskileri kendiliğinden silinir</small></div><div class="range"><input type="range" min="3" max="50" id="keep-backups"><b id="keep-backups-v"></b></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= YEDEKLEME ================= -->
+  <section class="page" id="page-backup">
+    <div class="page-head">
+      <div><h1>Yedekleme</h1><p>Kayıt dosyalarını güvene al, istediğin zaman geri dön.</p></div>
+      <div class="head-actions"><button class="btn ghost" data-action="open-backups">Yedek klasörü</button><button class="btn orange" data-action="backup">Şimdi yedekle</button></div>
+    </div>
+    <div class="settings-grid two">
+      <div class="card"><div class="card-head"><h3>KAYITLARIN</h3><a class="link" data-action="open-user">Klasörü aç →</a></div><div id="save-list"></div></div>
+      <div class="card"><div class="card-head"><h3>YEDEKLER</h3></div><div id="backup-list"></div></div>
+    </div>
+  </section>
+
+  <!-- ================= HAKKINDA ================= -->
+  <section class="page" id="page-about">
+    <div class="page-head"><div><h1>Hakkında</h1><p>SA Garage — kişisel San Andreas launcher'ı.</p></div></div>
+    <div class="settings-grid two">
+      <div class="card about">
+        <div class="about-logo" id="about-logo"></div>
+        <p>Oyunu tek tıkla başlatır, araç ve skin modlarını orijinal dosyalara dokunmadan kurar, kayıtlarını yedekler. Modlar <b>modloader</b> klasörüne kurulur; istediğin zaman kapatıp açabilirsin.</p>
+        <p class="muted">Mod desteği için açık kaynak <b>Mod Loader</b> (LINK/2012) ve <b>Ultimate ASI Loader</b> (ThirteenAG) kullanılır; ikisi de kurulum sırasında kendi GitHub sayfalarından indirilir.</p>
+        <p class="muted">Bu launcher resmi değildir; Rockstar Games ile bağlantısı yoktur. Oyunun yasal bir kopyası gerekir.</p>
+      </div>
+      <div class="card"><div class="card-head"><h3>GARAJ GÜNLÜĞÜ</h3></div><div id="journal-full" class="news-list"></div></div>
+    </div>
+  </section>
+</main>
+
+<footer class="statusbar card">
+  <div class="sb-game"><span class="sb-thumb" id="sb-thumb"></span><div><b>GTA San Andreas</b><small id="sb-edition">Klasik Sürüm (PC)</small></div></div>
+  <div class="sb-item"><small>Oyun Durumu</small><b id="sb-state"><i></i>Hazır</b></div>
+  <div class="sb-item"><small>Toplam Mod</small><b id="sb-mods">0 adet</b></div>
+  <div class="sb-item grow"><small>Oyun Klasörü</small><b id="sb-dir">—</b></div>
+  <div class="sb-sign">San Andreas<br>Forever<span id="sb-palm"></span></div>
+</footer>
+
+<div class="drop" id="drop"><div><b>Modu bırak</b><small>.zip · .rar · .7z ya da klasör</small></div></div>
+<div class="progress-toast" id="progress"><i></i><span></span></div>
+<div class="toast" id="toast"></div>
+<div class="menu" id="menu"></div>
+<div class="modal" id="modal"><div class="modal-box"><h3 id="modal-title"></h3><div id="modal-body"></div><div class="modal-actions"><button class="btn ghost" id="modal-cancel">Vazgeç</button><button class="btn orange" id="modal-ok">Kaydet</button></div></div></div>
+
+<script src="art.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+name: Windows kurulum paketi
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Bağımlılıkları kur
+        run: npm install --no-audit --no-fund
+
+      - name: Setup.exe oluştur
+        run: npx electron-builder --win nsis --publish never
+
+      - name: Sahte oyun ve test modu hazırla
+        shell: pwsh
+        run: |
+          $game = Join-Path $env:RUNNER_TEMP "Oyun\GTA San Andreas"
+          New-Item -ItemType Directory -Force $game | Out-Null
+          Set-Content -Path (Join-Path $game "gta_sa.exe") -Value "test"
+          $mod = Join-Path $env:RUNNER_TEMP "Gumus_Sedan_2003_by_test"
+          New-Item -ItemType Directory -Force (Join-Path $mod "models") | Out-Null
+          Set-Content -Path (Join-Path $mod "models\sentinel.dff") -Value "dff"
+          Set-Content -Path (Join-Path $mod "models\sentinel.txd") -Value "txd"
+          Set-Content -Path (Join-Path $mod "readme.txt") -Value "test"
+          Compress-Archive -Path "$mod\*" -DestinationPath (Join-Path $env:RUNNER_TEMP "Gumus_Sedan_2003_by_test.zip")
+          "SAG_TEST_GAME=$game" >> $env:GITHUB_ENV
+          "SAG_TEST_MOD=$(Join-Path $env:RUNNER_TEMP 'Gumus_Sedan_2003_by_test.zip')" >> $env:GITHUB_ENV
+
+      - name: Launcher'ı dene
+        continue-on-error: true
+        shell: pwsh
+        env:
+          SAG_SELFTEST: ${{ runner.temp }}\selftest
+        run: |
+          $p = Start-Process -FilePath "dist\win-unpacked\SA Garage.exe" -PassThru
+          if (-not $p.WaitForExit(240000)) { $p.Kill(); Write-Host "zaman aşımı" }
+          Get-ChildItem -Recurse $env:SAG_TEST_GAME | Select-Object FullName, Length | Format-Table -AutoSize | Out-String -Width 300
+          Get-ChildItem -Recurse $env:SAG_TEST_GAME | Select-Object -ExpandProperty FullName | Out-File "$env:SAG_SELFTEST\game-files.txt"
+
+      - name: Test çıktısını sakla
+        if: always()
+        continue-on-error: true
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          D="$RUNNER_TEMP/selftest"
+          [ -d "$D" ] || exit 0
+          cd "$D"
+          git init -q
+          git checkout -q -b ci-selftest
+          git -c user.name=ci -c user.email=ci@localhost add -A
+          git -c user.name=ci -c user.email=ci@localhost commit -q -m "selftest ${{ github.sha }}"
+          git push -q -f "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git" ci-selftest
+
+      - name: Releases'e yükle
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          gh release delete son-surum --cleanup-tag -y || true
+          gh release create son-surum dist/*.exe \
+            --title "SA Garage v$VERSION" \
+            --notes "Windows için kurulum dosyası. **SA-Garage-Setup-$VERSION.exe** dosyasını indirip çalıştır. SmartScreen uyarı verirse *Ek bilgi → Yine de çalıştır* de." \
+            --latest

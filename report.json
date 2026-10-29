@@ -1,0 +1,113 @@
+{
+  "errors": [],
+  "detect": [],
+  "import": {
+    "id": "mvtyy2xkb84443",
+    "name": "Gumus Sedan 2003 by Test",
+    "category": "Araç",
+    "subtitle": "Sentinel yerine",
+    "replaces": [
+      {
+        "model": "sentinel",
+        "name": "Sentinel",
+        "id": 405
+      }
+    ],
+    "added": 1793304078720,
+    "size": 16,
+    "fileCount": 3,
+    "thumb": null,
+    "installed": false,
+    "folderName": "Gumus_Sedan_2003_by_Test_4443",
+    "source": "Gumus_Sedan_2003_by_test.zip",
+    "hasModelFiles": true,
+    "color": "#10b981"
+  },
+  "setDir": {
+    "ok": true,
+    "dir": "D:\\a\\_temp\\Oyun\\GTA San Andreas",
+    "exe": "D:\\a\\_temp\\Oyun\\GTA San Andreas\\gta_sa.exe",
+    "exeName": "gta_sa.exe",
+    "size": 6,
+    "version": "Klasik sürüm",
+    "moddable": true,
+    "asiLoader": false,
+    "modloader": false,
+    "modsEnabled": false
+  },
+  "support": {
+    "ok": true,
+    "installed": [
+      "Ultimate ASI Loader v10.0.2",
+      "Mod Loader v0.3.10"
+    ]
+  },
+  "afterSupport": {
+    "ok": true,
+    "dir": "D:\\a\\_temp\\Oyun\\GTA San Andreas",
+    "exe": "D:\\a\\_temp\\Oyun\\GTA San Andreas\\gta_sa.exe",
+    "exeName": "gta_sa.exe",
+    "size": 6,
+    "version": "Klasik sürüm",
+    "moddable": true,
+    "asiLoader": true,
+    "modloader": true,
+    "modsEnabled": true
+  },
+  "install": {
+    "meta": {
+      "id": "mvtyy2xkb84443",
+      "name": "Gumus Sedan 2003 by Test",
+      "category": "Araç",
+      "subtitle": "Sentinel yerine",
+      "replaces": [
+        {
+          "model": "sentinel",
+          "name": "Sentinel",
+          "id": 405
+        }
+      ],
+      "added": 1793304078720,
+      "size": 16,
+      "fileCount": 3,
+      "thumb": null,
+      "installed": true,
+      "folderName": "Gumus_Sedan_2003_by_Test_4443",
+      "source": "Gumus_Sedan_2003_by_test.zip",
+      "hasModelFiles": true,
+      "color": "#10b981",
+      "installedAt": 1793304079843,
+      "gameDir": "D:\\a\\_temp\\Oyun\\GTA San Andreas"
+    },
+    "warnings": []
+  },
+  "list": {
+    "mods": [
+      {
+        "id": "mvtyy2xkb84443",
+        "name": "Gumus Sedan 2003 by Test",
+        "category": "Araç",
+        "subtitle": "Sentinel yerine",
+        "replaces": [
+          {
+            "model": "sentinel",
+            "name": "Sentinel",
+            "id": 405
+          }
+        ],
+        "added": 1793304078720,
+        "size": 16,
+        "fileCount": 3,
+        "thumb": null,
+        "installed": true,
+        "folderName": "Gumus_Sedan_2003_by_Test_4443",
+        "source": "Gumus_Sedan_2003_by_test.zip",
+        "hasModelFiles": true,
+        "color": "#10b981",
+        "installedAt": 1793304079843,
+        "gameDir": "D:\\a\\_temp\\Oyun\\GTA San Andreas"
+      }
+    ],
+    "external": []
+  }
+}

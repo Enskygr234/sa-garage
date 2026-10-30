@@ -3,6 +3,7 @@
 <h1 align="center">SA Garage</h1>
 <p align="center">San Andreas için kişisel launcher: tek tıkla oyna, araç modlarını kur, kayıtlarını yedekle.</p>
 
+<p align="center"><sub>Fikir ve tasarım: <b>Enes</b> (<a href="https://github.com/Enskygr234">@Enskygr234</a>)</sub></p>
 <p align="center"><a href="../../releases/latest"><b>⬇ Windows için indir (Setup.exe)</b></a></p>
 
 <p align="center"><img src="docs/screenshots/ana-sayfa.png" width="860" alt="SA Garage ana sayfa"></p>
@@ -54,3 +55,8 @@ npm run dist   # dist/ klasörüne Setup.exe
 ---
 
 Bu launcher resmi değildir; Rockstar Games ile bağlantısı yoktur. Oyunun yasal bir kopyası gerekir. Mod desteği: [Mod Loader](https://github.com/thelink2012/modloader) (LINK/2012) ve [Ultimate ASI Loader](https://github.com/ThirteenAG/Ultimate-ASI-Loader) (ThirteenAG).
+
+## Yapımcılar
+
+- **Fikir ve tasarım:** Enes ([@Enskygr234](https://github.com/Enskygr234)) — launcher tasarımı ve özellikleri
+- **Kodlama:** Claude ile birlikte

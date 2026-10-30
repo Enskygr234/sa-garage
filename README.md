@@ -5,6 +5,17 @@
 
 <p align="center"><a href="../../releases/latest"><b>⬇ Windows için indir (Setup.exe)</b></a></p>
 
+<p align="center"><img src="docs/screenshots/ana-sayfa.png" width="860" alt="SA Garage ana sayfa"></p>
+
+| | |
+|---|---|
+| <img src="docs/screenshots/modlar.png" alt="Modlar"> | <img src="docs/screenshots/oyna.png" alt="Oyna"> |
+| Mod kütüphanesi | Oyun öncesi kontrol ve istatistikler |
+| <img src="docs/screenshots/ayarlar.png" alt="Ayarlar"> | <img src="docs/screenshots/yedekleme.png" alt="Yedekleme"> |
+| Ayarlar ve mod desteği | Kayıt yedekleme |
+
+<sub>Ekran görüntülerindeki modlar ve veriler örnektir.</sub>
+
 ---
 
 ## İlk kurulum (bir kere)
